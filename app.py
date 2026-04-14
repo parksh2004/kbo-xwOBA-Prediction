@@ -18,7 +18,7 @@ except Exception as e:
     st.stop()
 
 st.title("⚾ KBO 투수 타구 질(xwOBA) 예측 대시보드")
-st.markdown("선수의 주요 스탯을 입력하면 **앙상블 머신러닝 모델(Ridge + XGBoost)**이 추정하는 순수 xwOBA를 계산합니다.")
+st.markdown("선수의 주요 스탯을 입력하면 모델이 추정하는 xwOBA를 계산합니다.")
 
 col1, col2 = st.columns(2)
 

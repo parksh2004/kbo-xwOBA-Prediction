@@ -57,8 +57,12 @@ input_data = pd.DataFrame({
 })
 
 if st.button("🚀 xwOBA 예측하기", use_container_width=True):
-    prediction = model.predict(input_data)[0]
+    # 입력된 원본 데이터를 스케일러로 먼저 변환한 뒤 예측 수행!
+    input_scaled = scaler.transform(input_data)
+    prediction = model.predict(input_scaled)[0]
+    
     st.divider()
+    
     if prediction < 0.290:
         eval_text, color = "✨ 특급 (Excellent)", "#1f77b4"
     elif prediction < 0.320:

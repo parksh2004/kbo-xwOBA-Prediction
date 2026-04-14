@@ -6,11 +6,13 @@ st.set_page_config(page_title="KBO xwOBA 예측 대시보드", layout="centered"
 
 @st.cache_resource
 def load_model():
-    # 💡 수정된 부분: 파일 이름만 적어줍니다 (같은 폴더에 있으므로)
-    return joblib.load('xwOBA_prediction_model.pkl')
+    # 저장된 패키지(딕셔너리)를 불러옵니다.
+    return joblib.load('xwOBA_ridge_model.pkl')
 
 try:
-    model = load_model()
+    model_package = load_model()
+    scaler = model_package['scaler'] # 스케일러 분리
+    model = model_package['model']   # 모델 분리
 except Exception as e:
     st.error(f"모델 로드 실패: {e}")
     st.stop()
